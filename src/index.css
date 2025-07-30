@@ -125,7 +125,7 @@
   
   /* Navigation Links */
   .nav-link {
-    @apply text-white text-sm font-medium uppercase tracking-wide relative group hover:text-red-100 transition-colors duration-300;
+    @apply text-white text-sm font-medium uppercase tracking-wide relative hover:text-red-100 transition-colors duration-300;
   }
   
   .nav-link::after {
