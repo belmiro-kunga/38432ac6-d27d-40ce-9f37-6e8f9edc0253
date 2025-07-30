@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { EnhancedButton } from '@/components/ui/EnhancedButton';
+import { AnimatedSection } from '@/components/ui/InteractiveElements';
 
 interface FormData {
   nome: string;
@@ -118,11 +120,35 @@ const ContactSection = () => {
     }
   };
 
+  // Real-time validation
+  const validateField = (field: keyof FormData, value: string): string | undefined => {
+    switch (field) {
+      case 'nome':
+        if (!value.trim()) return 'Nome é obrigatório';
+        if (value.length < 2) return 'Nome deve ter pelo menos 2 caracteres';
+        break;
+      case 'email':
+        if (!value.trim()) return 'E-mail é obrigatório';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'E-mail inválido';
+        break;
+      case 'telefone':
+        if (!value.trim()) return 'Telefone é obrigatório';
+        if (!/^[\+]?[0-9\s\-\(\)]{9,}$/.test(value)) return 'Telefone inválido';
+        break;
+      case 'mensagem':
+        if (!value.trim()) return 'Mensagem é obrigatória';
+        if (value.length < 10) return 'Mensagem muito curta (mínimo 10 caracteres)';
+        if (value.length > 1000) return 'Mensagem muito longa (máximo 1000 caracteres)';
+        break;
+    }
+    return undefined;
+  };
+
   return (
-    <section id="contactos" className="section bg-white">
+    <AnimatedSection id="contactos" className="section bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-air-black mb-6">
             Entre em 
             <span className="text-gradient block">Contacto</span>
@@ -192,9 +218,17 @@ const ContactSection = () => {
                     type="text"
                     id="nome"
                     value={formData.nome}
-                    onChange={(e) => handleInputChange('nome', e.target.value)}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-air-red focus:border-air-red transition-colors duration-300 ${
-                      errors.nome ? 'border-red-500' : 'border-air-gray'
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      handleInputChange('nome', value);
+                      // Real-time validation
+                      const error = validateField('nome', value);
+                      if (error !== errors.nome) {
+                        setErrors(prev => ({ ...prev, nome: error }));
+                      }
+                    }}
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-air-red focus:border-air-red transition-all duration-300 ${
+                      errors.nome ? 'border-red-500 ring-1 ring-red-500' : 'border-air-gray hover:border-air-red/50'
                     }`}
                     placeholder="Seu nome completo"
                   />
@@ -285,29 +319,23 @@ const ContactSection = () => {
                 </div>
 
                 {/* Submit Button */}
-                <button
+                <EnhancedButton
                   type="submit"
-                  disabled={loading}
-                  className="w-full btn-hero disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  loading={loading}
+                  disabled={loading || Object.keys(errors).some(key => errors[key as keyof FormData])}
+                  variant="premium"
+                  size="lg"
+                  className="w-full"
+                  leftIcon={!loading && <Send className="w-5 h-5" />}
                 >
-                  {loading ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2" />
-                      Enviando...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5 mr-2" />
-                      Enviar Mensagem
-                    </>
-                  )}
-                </button>
+                  Enviar Mensagem
+                </EnhancedButton>
               </form>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 };
 
