@@ -1,26 +1,29 @@
 import { Shield, Clock, Award, Users } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const AboutSection = () => {
+  const { t } = useLanguage();
+  
   const advantages = [
     {
       icon: Shield,
-      title: 'Segurança',
-      description: 'Padrões internacionais de segurança e manutenção'
+      title: t('about.advantages.safety.title'),
+      description: t('about.advantages.safety.description')
     },
     {
       icon: Clock,
-      title: 'Pontualidade',
-      description: 'Horários flexíveis adaptados às suas necessidades'
+      title: t('about.advantages.flexibility.title'),
+      description: t('about.advantages.flexibility.description')
     },
     {
       icon: Award,
-      title: 'Excelência',
-      description: 'Serviço premium com atenção aos detalhes'
+      title: t('about.advantages.comfort.title'),
+      description: t('about.advantages.comfort.description')
     },
     {
       icon: Users,
-      title: 'Experiência',
-      description: 'Equipe experiente e profissional'
+      title: t('about.advantages.efficiency.title'),
+      description: t('about.advantages.efficiency.description')
     }
   ];
 
@@ -31,21 +34,14 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
           <div className="animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-air-black mb-6">
-              Compromisso com a 
-              <span className="text-gradient block">Excelência</span>
+              {t('about.title')}
+              <span className="text-gradient block">{t('about.subtitle')}</span>
             </h2>
-            <p className="text-lg text-air-gray-dark mb-6 leading-relaxed">
-              A AIR TWO é uma companhia aérea privada angolana dedicada a oferecer 
-              serviços de aviação empresarial de alta qualidade. Nossa missão é 
-              conectar Angola ao mundo através de voos seguros, pontuais e confortáveis.
-            </p>
             <p className="text-lg text-air-gray-dark mb-8 leading-relaxed">
-              Com uma frota moderna e uma equipe altamente qualificada, garantimos 
-              uma experiência de voo incomparável, adaptada às necessidades específicas 
-              de cada cliente.
+              {t('about.description')}
             </p>
             <button className="btn-outline group">
-              <span>Saiba Mais</span>
+              <span>{t('hero.learnMore')}</span>
               <Shield className="inline-block w-5 h-5 ml-2 group-hover:rotate-12 transition-transform duration-300" />
             </button>
           </div>
@@ -59,7 +55,7 @@ const AboutSection = () => {
               />
               <div className="absolute -bottom-6 -right-6 bg-air-red text-white p-6 rounded-2xl shadow-red">
                 <div className="text-3xl font-bold">15+</div>
-                <div className="text-sm uppercase tracking-wide">Anos de Experiência</div>
+                <div className="text-sm uppercase tracking-wide">{t('about.experience')}</div>
               </div>
             </div>
           </div>

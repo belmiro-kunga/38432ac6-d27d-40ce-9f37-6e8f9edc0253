@@ -1,23 +1,26 @@
 import { Plane, MapPin, Calendar, Headphones } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ServicesSection = () => {
+  const { t } = useLanguage();
+  
   const services = [
     {
       icon: Plane,
-      title: 'Voos Charter',
-      description: 'Voos personalizados para destinos nacionais e internacionais com total flexibilidade de horários.',
+      title: t('services.charter.title'),
+      description: t('services.charter.description'),
       features: ['Horários flexíveis', 'Destinos personalizados', 'Conforto premium']
     },
     {
       icon: MapPin,
-      title: 'Turismo Aéreo',
-      description: 'Explore Angola e países vizinhos com nossos pacotes turísticos exclusivos.',
+      title: t('services.management.title'),
+      description: t('services.management.description'),
       features: ['Roteiros exclusivos', 'Guias especializados', 'Experiências únicas']
     },
     {
       icon: Calendar,
-      title: 'Voos Executivos',
-      description: 'Transporte empresarial para reuniões de negócios e eventos corporativos.',
+      title: t('services.maintenance.title'),
+      description: t('services.maintenance.description'),
       features: ['Sala VIP', 'Wi-Fi a bordo', 'Serviço personalizado']
     },
     {
@@ -34,12 +37,11 @@ const ServicesSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Nossos 
-            <span className="text-gradient block">Serviços</span>
+            {t('services.title')}
+            <span className="text-gradient block"></span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Oferecemos uma gama completa de serviços de aviação empresarial, 
-            adaptados às necessidades específicas de cada cliente.
+            {t('services.subtitle')}
           </p>
         </div>
 

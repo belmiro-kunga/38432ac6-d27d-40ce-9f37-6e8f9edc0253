@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Plane, Menu, X } from 'lucide-react';
 import { SmoothScrollLink } from '@/components/ui/InteractiveElements';
+import { LanguageSelector } from '@/components/ui/LanguageSelector';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Header = () => {
+  const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('inicio');
@@ -17,11 +20,11 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { label: 'INÍCIO', href: '#inicio', id: 'inicio' },
-    { label: 'SOBRE', href: '#sobre', id: 'sobre' },
-    { label: 'SERVIÇOS', href: '#servicos', id: 'servicos' },
-    { label: 'FROTA', href: '#frota', id: 'frota' },
-    { label: 'CONTACTOS', href: '#contactos', id: 'contactos' }
+    { label: t('nav.home').toUpperCase(), href: '#inicio', id: 'inicio' },
+    { label: t('nav.about').toUpperCase(), href: '#sobre', id: 'sobre' },
+    { label: t('nav.services').toUpperCase(), href: '#servicos', id: 'servicos' },
+    { label: t('nav.fleet').toUpperCase(), href: '#frota', id: 'frota' },
+    { label: t('nav.contact').toUpperCase(), href: '#contactos', id: 'contactos' }
   ];
 
   const handleNavClick = (id: string) => {
@@ -76,31 +79,37 @@ const Header = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
-            <SmoothScrollLink
-              key={item.id}
-              href={item.href}
-              onNavigate={handleNavClick}
-              className={`nav-link relative group ${
-                activeSection === item.id ? 'text-white' : 'text-white/80'
-              }`}
-            >
-              {item.label}
-              <span className={`absolute -bottom-1 left-0 h-0.5 bg-white transition-all duration-300 ${
-                activeSection === item.id ? 'w-full' : 'w-0 group-hover:w-full'
-              }`} />
-            </SmoothScrollLink>
-          ))}
-        </nav>
+        <div className="hidden md:flex items-center space-x-6">
+          <nav className="flex items-center space-x-8">
+            {navItems.map((item) => (
+              <SmoothScrollLink
+                key={item.id}
+                href={item.href}
+                onNavigate={handleNavClick}
+                className={`nav-link relative group ${
+                  activeSection === item.id ? 'text-white' : 'text-white/80'
+                }`}
+              >
+                {item.label}
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-white transition-all duration-300 ${
+                  activeSection === item.id ? 'w-full' : 'w-0 group-hover:w-full'
+                }`} />
+              </SmoothScrollLink>
+            ))}
+          </nav>
+          <LanguageSelector />
+        </div>
 
-        {/* Mobile Menu Button */}
-        <button 
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors duration-300"
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        {/* Mobile Menu and Language Selector */}
+        <div className="md:hidden flex items-center space-x-2">
+          <LanguageSelector />
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors duration-300"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}

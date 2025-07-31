@@ -3,6 +3,7 @@ import { MapPin, Phone, Mail, Send, CheckCircle, AlertCircle } from 'lucide-reac
 import { useToast } from '@/hooks/use-toast';
 import { EnhancedButton } from '@/components/ui/EnhancedButton';
 import { AnimatedSection } from '@/components/ui/InteractiveElements';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface FormData {
   nome: string;
@@ -12,6 +13,7 @@ interface FormData {
 }
 
 const ContactSection = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState<FormData>({
     nome: '',
     email: '',
@@ -25,17 +27,17 @@ const ContactSection = () => {
   const contactInfo = [
     {
       icon: MapPin,
-      title: 'Endereço',
+      title: t('contact.info.address'),
       details: ['Aeroporto Internacional 4 de Fevereiro', 'Luanda, Angola']
     },
     {
       icon: Phone,
-      title: 'Telefone',
+      title: t('contact.info.phone'),
       details: ['+244 923 456 789', '+244 912 345 678']
     },
     {
       icon: Mail,
-      title: 'E-mail',
+      title: t('contact.info.email'),
       details: ['info@airtwo.ao', 'reservas@airtwo.ao']
     }
   ];
@@ -150,12 +152,10 @@ const ContactSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-air-black mb-6">
-            Entre em 
-            <span className="text-gradient block">Contacto</span>
+            {t('contact.title')}
           </h2>
           <p className="text-xl text-air-gray-dark max-w-3xl mx-auto leading-relaxed">
-            Estamos prontos para atendê-lo. Entre em contacto connosco para 
-            mais informações ou para solicitar uma cotação personalizada.
+            {t('contact.subtitle')}
           </p>
         </div>
 

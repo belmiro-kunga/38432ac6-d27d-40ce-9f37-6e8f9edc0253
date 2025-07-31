@@ -1,6 +1,8 @@
 import { Plane, MapPin, Phone, Mail, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   const footerSections = [
@@ -59,8 +61,7 @@ const Footer = () => {
             </div>
             
             <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
-              Companhia aérea privada angolana dedicada à excelência em aviação empresarial. 
-              Conectando Angola ao mundo com segurança e conforto.
+              {t('footer.description')}
             </p>
 
             {/* Social Links */}
@@ -80,7 +81,7 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-bold mb-6 text-air-red">Serviços</h3>
+            <h3 className="text-lg font-bold mb-6 text-air-red">{t('footer.quickLinks')}</h3>
             <ul className="space-y-3">
               {footerSections[1].links?.map((link, index) => (
                 <li key={index}>
@@ -97,7 +98,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-bold mb-6 text-air-red">Contacto</h3>
+            <h3 className="text-lg font-bold mb-6 text-air-red">{t('footer.contact')}</h3>
             <div className="space-y-4">
               {footerSections[2].info?.map((item, index) => (
                 <div key={index} className="flex items-start space-x-3">
@@ -117,7 +118,7 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              © {currentYear} AIR TWO. Todos os direitos reservados.
+              © {currentYear} AIR TWO. {t('footer.rights')}
             </p>
             
             <div className="flex space-x-6">

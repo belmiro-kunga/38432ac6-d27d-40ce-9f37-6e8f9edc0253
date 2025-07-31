@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface Slide {
   image: string;
@@ -9,26 +10,27 @@ interface Slide {
 }
 
 const HeroCarousel = () => {
+  const { t } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides: Slide[] = [
     {
       image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1920&h=1080&fit=crop',
-      title: 'Voos Empresariais de Excelência',
-      subtitle: 'Conectando Angola ao mundo com segurança e conforto',
-      cta: 'Ler mais...'
+      title: t('hero.title'),
+      subtitle: t('hero.subtitle'),
+      cta: t('hero.learnMore')
     },
     {
       image: 'https://images.unsplash.com/photo-1583425423320-2386622cd2e4?w=1920&h=1080&fit=crop',
-      title: 'Flexibilidade Total',
-      subtitle: 'Horários adaptados às suas necessidades',
-      cta: 'Ler mais...'
+      title: t('hero.title'),
+      subtitle: t('hero.subtitle'),
+      cta: t('hero.cta')
     },
     {
       image: 'https://images.unsplash.com/photo-1544824353-4d5a1e3dd1c3?w=1920&h=1080&fit=crop',
-      title: 'Frota Moderna',
-      subtitle: 'Aeronaves de última geração para máximo conforto',
-      cta: 'Ler mais...'
+      title: t('hero.title'),
+      subtitle: t('hero.subtitle'),
+      cta: t('hero.learnMore')
     }
   ];
 

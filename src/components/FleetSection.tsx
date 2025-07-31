@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Users, Gauge, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface Aircraft {
   id: number;
@@ -13,6 +14,7 @@ interface Aircraft {
 }
 
 const FleetSection = () => {
+  const { t } = useLanguage();
   const [selectedAircraft, setSelectedAircraft] = useState(0);
 
   const aircraft: Aircraft[] = [
@@ -64,12 +66,11 @@ const FleetSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold text-air-black mb-6">
-            Nossa 
-            <span className="text-gradient">Frota</span>
+            {t('fleet.title')}
+            <span className="text-gradient"></span>
           </h2>
           <p className="text-xl text-air-gray-dark max-w-3xl mx-auto leading-relaxed">
-            Aeronaves modernas e bem equipadas para garantir segurança, 
-            conforto e eficiência em todos os voos.
+            {t('fleet.subtitle')}
           </p>
         </div>
 
@@ -155,7 +156,7 @@ const FleetSection = () => {
               </div>
 
               <button className="btn-hero w-full">
-                <span>Solicitar Esta Aeronave</span>
+                <span>{t('fleet.viewDetails')}</span>
               </button>
             </div>
           </div>
