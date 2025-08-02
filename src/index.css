@@ -302,6 +302,57 @@ html {
   transform: translateY(2rem);
 }
 
+/* Modal and Form Styles */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Form Styles */
+.form-input:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.aircraft-card {
+  transition: all 0.3s ease;
+}
+
+.aircraft-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.aircraft-card.selected {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+/* Step Indicator */
+.step-indicator {
+  transition: all 0.3s ease;
+}
+
+.step-indicator.active {
+  background-color: #dc2626;
+  border-color: #dc2626;
+  color: white;
+}
+
 /* Smooth scrolling for reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {

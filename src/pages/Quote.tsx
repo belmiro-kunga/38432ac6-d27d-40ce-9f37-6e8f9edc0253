@@ -111,28 +111,32 @@ const Quote = () => {
     switch (step) {
       case 1:
         return (
-          <div className="space-y-6">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold mb-2">Tipo de Viagem</h2>
-              <p className="text-muted-foreground">Selecione o tipo de viagem que deseja realizar</p>
+          <div className="space-y-4">
+            <div className="text-center mb-4">
+              <h2 className="text-lg font-bold mb-1">Tipo de Viagem</h2>
+              <p className="text-sm text-muted-foreground">Selecione o tipo de viagem que deseja realizar</p>
             </div>
             
-            <div className="grid gap-4">
+            <div className="grid gap-3">
               {tripTypes.map((type) => (
                 <Card 
                   key={type.value}
-                  className={`p-6 cursor-pointer transition-all ${
+                  className={`p-4 cursor-pointer transition-all ${
                     formData.tripType === type.value ? 'border-primary bg-primary/5' : 'hover:border-primary/50'
                   }`}
                   onClick={() => updateFormData('tripType', type.value)}
                 >
-                  <div className="flex items-center gap-4">
-                    <div className={`w-4 h-4 rounded-full border-2 ${
-                      formData.tripType === type.value ? 'bg-primary border-primary' : 'border-gray-300'
-                    }`} />
+                  <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="font-semibold">{type.label}</h3>
-                      <p className="text-sm text-muted-foreground">{type.description}</p>
+                      <h3 className="text-base font-semibold mb-1">{type.label}</h3>
+                      <p className="text-xs text-muted-foreground">{type.description}</p>
+                    </div>
+                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      formData.tripType === type.value ? 'bg-primary border-primary' : 'border-gray-300'
+                    }`}>
+                      {formData.tripType === type.value && (
+                        <CheckCircle className="w-3 h-3 text-white" />
+                      )}
                     </div>
                   </div>
                 </Card>
@@ -143,20 +147,20 @@ const Quote = () => {
 
       case 2:
         return (
-          <div className="space-y-6">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold mb-2">Destinos</h2>
-              <p className="text-muted-foreground">Escolha os aeroportos de origem e destino</p>
+          <div className="space-y-4">
+            <div className="text-center mb-4">
+              <h2 className="text-lg font-bold mb-1">Destinos</h2>
+              <p className="text-sm text-muted-foreground">Escolha os aeroportos de origem e destino</p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  <MapPin className="w-4 h-4 inline mr-2" />
+                <label className="block text-sm font-medium mb-1">
+                  <MapPin className="w-4 h-4 inline mr-1" />
                   Aeroporto de Origem
                 </label>
                 <select 
-                  className="w-full p-3 border rounded-lg bg-background"
+                  className="w-full p-2 border rounded-lg bg-background text-sm"
                   value={formData.departure}
                   onChange={(e) => updateFormData('departure', e.target.value)}
                 >
@@ -168,12 +172,12 @@ const Quote = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  <MapPin className="w-4 h-4 inline mr-2" />
+                <label className="block text-sm font-medium mb-1">
+                  <MapPin className="w-4 h-4 inline mr-1" />
                   Aeroporto de Destino
                 </label>
                 <select 
-                  className="w-full p-3 border rounded-lg bg-background"
+                  className="w-full p-2 border rounded-lg bg-background text-sm"
                   value={formData.destination}
                   onChange={(e) => updateFormData('destination', e.target.value)}
                 >
@@ -186,11 +190,11 @@ const Quote = () => {
             </div>
 
             {formData.departure && formData.destination && (
-              <Card className="p-4 bg-accent/5">
+              <Card className="p-3 bg-accent/5">
                 <div className="text-center">
-                  <div className="text-sm text-muted-foreground">Tempo estimado de voo:</div>
-                  <div className="text-xl font-bold text-primary">2h 30m</div>
-                  <div className="text-sm text-muted-foreground">Distância: ~1,200 km</div>
+                  <div className="text-xs text-muted-foreground">Tempo estimado de voo:</div>
+                  <div className="text-lg font-bold text-primary">2h 30m</div>
+                  <div className="text-xs text-muted-foreground">Distância: ~1,200 km</div>
                 </div>
               </Card>
             )}
@@ -517,13 +521,13 @@ const Quote = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-accent/5">
       {/* Header */}
-      <section className="relative py-16 bg-gradient-to-r from-primary/90 to-primary text-primary-foreground">
+      <section className="relative py-8 bg-gradient-to-r from-primary/90 to-primary text-primary-foreground">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">
+          <div className="text-center mb-4">
+            <h1 className="text-2xl md:text-3xl font-bold mb-2">
               Solicitar Cotação
             </h1>
-            <p className="text-lg md:text-xl">
+            <p className="text-sm md:text-base">
               Passo {step} de {totalSteps}: {
                 step === 1 ? 'Tipo de Viagem' :
                 step === 2 ? 'Destinos' :
@@ -542,9 +546,9 @@ const Quote = () => {
       </section>
 
       {/* Form Content */}
-      <section className="py-12">
+      <section className="py-6">
         <div className="max-w-4xl mx-auto px-4">
-          <Card className="p-8">
+          <Card className="p-4 md:p-6 max-h-[70vh] overflow-y-auto">
             {renderStep()}
 
             {/* Navigation Buttons */}

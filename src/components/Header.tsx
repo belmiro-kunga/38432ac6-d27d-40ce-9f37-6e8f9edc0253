@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Plane, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LanguageSelector } from '@/components/ui/LanguageSelector';
+import { SmoothScrollLink } from '@/components/ui/InteractiveElements';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Header = () => {

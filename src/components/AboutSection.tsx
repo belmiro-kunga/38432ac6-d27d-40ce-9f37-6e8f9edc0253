@@ -1,30 +1,17 @@
-import { Shield, Clock, Award, Users } from 'lucide-react';
+import { Shield, Clock, Award, Users, Plane, MapPin, Calendar, Headphones, Phone, Mail } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useState } from 'react';
+import { Modal } from '@/components/ui/Modal';
 
 const AboutSection = () => {
   const { t } = useLanguage();
-  
+  const [modalOpen, setModalOpen] = useState(false);
+
   const advantages = [
-    {
-      icon: Shield,
-      title: t('about.advantages.safety.title'),
-      description: t('about.advantages.safety.description')
-    },
-    {
-      icon: Clock,
-      title: t('about.advantages.flexibility.title'),
-      description: t('about.advantages.flexibility.description')
-    },
-    {
-      icon: Award,
-      title: t('about.advantages.comfort.title'),
-      description: t('about.advantages.comfort.description')
-    },
-    {
-      icon: Users,
-      title: t('about.advantages.efficiency.title'),
-      description: t('about.advantages.efficiency.description')
-    }
+    { icon: Shield, title: t('about.advantages.safety.title'), description: t('about.advantages.safety.description') },
+    { icon: Clock, title: t('about.advantages.flexibility.title'), description: t('about.advantages.flexibility.description') },
+    { icon: Award, title: t('about.advantages.comfort.title'), description: t('about.advantages.comfort.description') },
+    { icon: Users, title: t('about.advantages.efficiency.title'), description: t('about.advantages.efficiency.description') }
   ];
 
   return (
@@ -40,12 +27,14 @@ const AboutSection = () => {
             <p className="text-lg text-air-gray-dark mb-8 leading-relaxed">
               {t('about.description')}
             </p>
-            <button className="btn-outline group">
+            <button 
+              className="btn-outline group"
+              onClick={() => setModalOpen(true)}
+            >
               <span>{t('hero.learnMore')}</span>
               <Shield className="inline-block w-5 h-5 ml-2 group-hover:rotate-12 transition-transform duration-300" />
             </button>
           </div>
-
           <div className="animate-slide-up">
             <div className="relative">
               <img 
@@ -60,7 +49,6 @@ const AboutSection = () => {
             </div>
           </div>
         </div>
-
         {/* Advantages */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {advantages.map((advantage, index) => (
@@ -82,6 +70,81 @@ const AboutSection = () => {
           ))}
         </div>
       </div>
+      {/* Modal de Informações */}
+      <Modal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Nossos Serviços e Contacto"
+        size="xl"
+      >
+        <div className="space-y-8">
+          {/* Header */}
+          <div className="text-center bg-gradient-to-r from-air-red to-red-700 text-white rounded-xl p-6">
+            <h2 className="text-2xl font-bold mb-2">AIR TWO - Voos Particulares</h2>
+            <p className="opacity-90">Experiência premium em voos particulares</p>
+          </div>
+          {/* Serviços */}
+          <div>
+            <h3 className="text-xl font-bold mb-4 flex items-center">
+              <Plane className="w-5 h-5 mr-2 text-air-red" />
+              Nossos Serviços
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">Voo Charter Executivo</h4>
+                <p className="text-sm text-gray-600">Voos privados personalizados com flexibilidade total.</p>
+              </div>
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">Gestão de Viagens</h4>
+                <p className="text-sm text-gray-600">Serviço completo de planeamento e gestão.</p>
+              </div>
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">Manutenção e Serviços</h4>
+                <p className="text-sm text-gray-600">Serviços de manutenção e preparação VIP.</p>
+              </div>
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">Suporte 24/7</h4>
+                <p className="text-sm text-gray-600">Atendimento especializado disponível 24 horas.</p>
+              </div>
+            </div>
+          </div>
+          {/* Contacto */}
+          <div>
+            <h3 className="text-xl font-bold mb-4 flex items-center">
+              <Phone className="w-5 h-5 mr-2 text-air-red" />
+              Informações de Contacto
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="text-center p-4 bg-gray-50 rounded-lg">
+                <Phone className="w-6 h-6 mx-auto mb-2 text-air-red" />
+                <h4 className="font-semibold">Telefone</h4>
+                <p className="text-air-red">+351 213 456 789</p>
+              </div>
+              <div className="text-center p-4 bg-gray-50 rounded-lg">
+                <Mail className="w-6 h-6 mx-auto mb-2 text-air-red" />
+                <h4 className="font-semibold">Email</h4>
+                <p className="text-air-red">info@airtwo.pt</p>
+              </div>
+              <div className="text-center p-4 bg-gray-50 rounded-lg">
+                <Clock className="w-6 h-6 mx-auto mb-2 text-air-red" />
+                <h4 className="font-semibold">Horário</h4>
+                <p className="text-air-red">24/7</p>
+              </div>
+            </div>
+          </div>
+          {/* CTA */}
+          <div className="text-center bg-gray-50 rounded-lg p-6">
+            <h3 className="text-lg font-bold mb-2">Pronto para Voar Conosco?</h3>
+            <p className="text-gray-600 mb-4">Entre em contacto para uma cotação personalizada.</p>
+            <button 
+              onClick={() => setModalOpen(false)}
+              className="px-6 py-2 bg-air-red text-white rounded-lg hover:bg-red-700 transition-colors"
+            >
+              Solicitar Cotação
+            </button>
+          </div>
+        </div>
+      </Modal>
     </section>
   );
 };

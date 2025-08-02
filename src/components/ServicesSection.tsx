@@ -1,8 +1,11 @@
 import { Plane, MapPin, Calendar, Headphones } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useState } from 'react';
+import QuoteModal from '@/components/QuoteModal';
 
 const ServicesSection = () => {
   const { t } = useLanguage();
+  const [modalOpen, setModalOpen] = useState(false);
   
   const services = [
     {
@@ -93,12 +96,21 @@ const ServicesSection = () => {
               Entre em contacto connosco para planear a sua próxima viagem ou 
               solicitar uma cotação personalizada.
             </p>
-            <button className="btn-hero">
+            <button 
+              className="btn-hero"
+              onClick={() => setModalOpen(true)}
+            >
               <span>Solicitar Cotação</span>
             </button>
           </div>
         </div>
       </div>
+      
+      {/* Quote Modal */}
+      <QuoteModal 
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
     </section>
   );
 };
