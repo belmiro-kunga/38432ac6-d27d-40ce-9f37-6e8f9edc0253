@@ -1,7 +1,7 @@
 export type Language = 'pt' | 'en' | 'fr';
 
 export const languages: { code: Language; name: string; flag: string }[] = [
-  { code: 'pt', name: 'Português', flag: '🇧🇷' },
+  { code: 'pt', name: 'Português', flag: '🇵🇹' },
   { code: 'en', name: 'English', flag: '🇺🇸' },
   { code: 'fr', name: 'Français', flag: '🇫🇷' },
 ];
