@@ -519,15 +519,15 @@ const Quote = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-accent/5">
+    <div className="min-h-screen bg-gradient-to-b from-background to-accent/5 flex flex-col">
       {/* Header */}
-      <section className="relative py-8 bg-gradient-to-r from-primary/90 to-primary text-primary-foreground">
+      <section className="relative py-4 bg-gradient-to-r from-primary/90 to-primary text-primary-foreground">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center mb-4">
-            <h1 className="text-2xl md:text-3xl font-bold mb-2">
+          <div className="text-center mb-3">
+            <h1 className="text-xl md:text-2xl font-bold mb-1">
               Solicitar Cotação
             </h1>
-            <p className="text-sm md:text-base">
+            <p className="text-xs md:text-sm">
               Passo {step} de {totalSteps}: {
                 step === 1 ? 'Tipo de Viagem' :
                 step === 2 ? 'Destinos' :
@@ -540,25 +540,26 @@ const Quote = () => {
           </div>
           
           <div className="max-w-2xl mx-auto">
-            <Progress value={progress} className="h-2" />
+            <Progress value={progress} className="h-1.5" />
           </div>
         </div>
       </section>
 
       {/* Form Content */}
-      <section className="py-6">
-        <div className="max-w-4xl mx-auto px-4">
-          <Card className="p-4 md:p-6 max-h-[70vh] overflow-y-auto">
+      <section className="flex-1 py-3">
+        <div className="max-w-4xl mx-auto px-4 h-full">
+          <Card className="p-3 md:p-4 h-full flex flex-col">
             {renderStep()}
 
             {/* Navigation Buttons */}
-            <div className="flex justify-between mt-8 pt-6 border-t">
+            <div className="flex justify-between mt-4 pt-4 border-t mt-auto">
               <Button 
                 variant="outline" 
                 onClick={prevStep}
                 disabled={step === 1}
+                size="sm"
               >
-                <ArrowLeft className="w-4 h-4 mr-2" />
+                <ArrowLeft className="w-3 h-3 mr-1" />
                 Anterior
               </Button>
 
@@ -571,9 +572,10 @@ const Quote = () => {
                   (step === 4 && !formData.aircraft) ||
                   (step === 6 && (!formData.name || !formData.email || !formData.phone))
                 }
+                size="sm"
               >
                 {step === totalSteps ? 'Enviar Cotação' : 'Próximo'}
-                {step !== totalSteps && <ArrowRight className="w-4 h-4 ml-2" />}
+                {step !== totalSteps && <ArrowRight className="w-3 h-3 ml-1" />}
               </Button>
             </div>
           </Card>
@@ -581,19 +583,19 @@ const Quote = () => {
       </section>
 
       {/* Help Section */}
-      <section className="py-8 bg-accent/5">
+      <section className="py-3 bg-accent/5">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h3 className="font-semibold mb-2">Precisa de Ajuda?</h3>
-          <p className="text-muted-foreground mb-4">
+          <h3 className="text-sm font-semibold mb-1">Precisa de Ajuda?</h3>
+          <p className="text-xs text-muted-foreground mb-2">
             Nossa equipe está disponível 24/7 para ajudá-lo
           </p>
-          <div className="flex gap-4 justify-center">
-            <Button variant="outline" size="sm">
-              <Phone className="w-4 h-4 mr-2" />
+          <div className="flex gap-2 justify-center">
+            <Button variant="outline" size="sm" className="text-xs px-2 py-1 h-7">
+              <Phone className="w-3 h-3 mr-1" />
               +351 21 123 4567
             </Button>
-            <Button variant="outline" size="sm">
-              <Mail className="w-4 h-4 mr-2" />
+            <Button variant="outline" size="sm" className="text-xs px-2 py-1 h-7">
+              <Mail className="w-3 h-3 mr-1" />
               quotes@airtwo.pt
             </Button>
           </div>
