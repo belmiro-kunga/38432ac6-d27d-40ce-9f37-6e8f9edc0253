@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "services": "Serviços",
+    "fleet": "Frota",
+    "destinations": "Destinos",
+    "contact": "Contato"
+  },
+  "hero": {
+    "title": "Excelência em Aviação Executiva",
+    "subtitle": "Voe com segurança, conforto e pontualidade. Conectamos você aos seus destinos com o mais alto padrão de qualidade.",
+    "cta": "Reserve Agora",
+    "learnMore": "Saiba Mais"
+  },
+  "about": {
+    "title": "Sobre a AIR TWO",
+    "subtitle": "Excelência que nos move além das nuvens",
+    "description": "Com mais de uma década de experiência no mercado de aviação executiva, a AIR TWO se consolidou como referência em segurança, pontualidade e atendimento personalizado. Nossa missão é proporcionar viagens excepcionais, conectando pessoas e negócios com eficiência e sofisticação.",
+    "experience": "Anos de Experiência",
+    "advantages": {
+      "safety": {
+        "title": "Segurança Certificada",
+        "description": "Pilotos altamente qualificados e aeronaves com manutenção rigorosa seguindo padrões internacionais."
+      },
+      "flexibility": {
+        "title": "Flexibilidade Total",
+        "description": "Horários personalizados e destinos sob demanda para atender suas necessidades específicas."
+      },
+      "comfort": {
+        "title": "Conforto Premium",
+        "description": "Aeronaves modernas com interior luxuoso e serviços de bordo de primeira classe."
+      },
+      "efficiency": {
+        "title": "Eficiência Máxima",
+        "description": "Otimização de rotas e tempo para maximizar sua produtividade e conveniência."
+      }
+    }
+  },
+  "services": {
+    "title": "Nossos Serviços",
+    "subtitle": "Soluções completas em aviação executiva",
+    "charter": {
+      "title": "Fretamento",
+      "description": "Voos sob demanda com total flexibilidade de horários e destinos."
+    },
+    "management": {
+      "title": "Gerenciamento",
+      "description": "Gestão completa da sua aeronave com manutenção e operação especializada."
+    },
+    "maintenance": {
+      "title": "Manutenção",
+      "description": "Serviços técnicos certificados com os mais altos padrões de qualidade."
+    }
+  },
+  "fleet": {
+    "title": "Nossa Frota",
+    "subtitle": "Aeronaves modernas e bem equipadas",
+    "viewDetails": "Ver Detalhes"
+  },
+  "contact": {
+    "title": "Entre em Contato",
+    "subtitle": "Pronto para decolar? Fale conosco",
+    "form": {
+      "name": "Nome Completo",
+      "email": "E-mail",
+      "phone": "Telefone",
+      "service": "Serviço de Interesse",
+      "message": "Mensagem",
+      "submit": "Enviar Mensagem",
+      "submitting": "Enviando...",
+      "success": "Mensagem enviada com sucesso!"
+    },
+    "info": {
+      "phone": "Telefone",
+      "email": "E-mail",
+      "address": "Endereço",
+      "hours": "Horário de Atendimento"
+    }
+  },
+  "footer": {
+    "description": "Excelência em aviação executiva com segurança, conforto e pontualidade.",
+    "quickLinks": "Links Rápidos",
+    "contact": "Contato",
+    "followUs": "Siga-nos",
+    "rights": "Todos os direitos reservados."
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "close": "Fechar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior"
+  }
+}

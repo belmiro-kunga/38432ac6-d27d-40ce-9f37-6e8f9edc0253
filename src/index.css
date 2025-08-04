@@ -1,0 +1,373 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AIR TWO Design System - Corporate Colors: Red (#D00000) and Black (#1A1A1A) */
+
+@layer base {
+  :root {
+    /* AIR TWO Brand Colors */
+    --air-two-red: 0 100% 41.2%; /* #D00000 */
+    --air-two-black: 0 0% 10.2%; /* #1A1A1A */
+    --air-two-white: 0 0% 100%;
+    --air-two-gray: 0 0% 90%;
+    --air-two-gray-dark: 0 0% 25%;
+    
+    /* Red Variants */
+    --red-light: 0 100% 50%;
+    --red-dark: 0 100% 35%;
+    --red-muted: 0 100% 95%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--air-two-red)), hsl(var(--red-dark)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--air-two-red)) 0%, hsl(var(--air-two-black)) 100%);
+    --gradient-overlay: linear-gradient(rgba(26, 26, 26, 0.8), rgba(208, 0, 0, 0.6));
+    
+    /* Shadows */
+    --shadow-red: 0 10px 30px -10px hsl(var(--air-two-red) / 0.3);
+    --shadow-elegant: 0 20px 60px -10px hsl(var(--air-two-black) / 0.4);
+    --shadow-glow: 0 0 40px hsl(var(--air-two-red) / 0.2);
+    
+    /* Base Theme */
+    --background: var(--air-two-white);
+    --foreground: var(--air-two-black);
+    --card: var(--air-two-white);
+    --card-foreground: var(--air-two-black);
+    --popover: var(--air-two-white);
+    --popover-foreground: var(--air-two-black);
+    
+    /* Primary - AIR TWO Red */
+    --primary: var(--air-two-red);
+    --primary-foreground: var(--air-two-white);
+    
+    /* Secondary - AIR TWO Black */
+    --secondary: var(--air-two-black);
+    --secondary-foreground: var(--air-two-white);
+    
+    /* Accent */
+    --accent: var(--air-two-gray);
+    --accent-foreground: var(--air-two-black);
+    
+    /* Muted */
+    --muted: var(--air-two-gray);
+    --muted-foreground: var(--air-two-gray-dark);
+    
+    /* Destructive */
+    --destructive: var(--air-two-red);
+    --destructive-foreground: var(--air-two-white);
+    
+    /* Borders & Inputs */
+    --border: var(--air-two-gray);
+    --input: var(--air-two-gray);
+    --ring: var(--air-two-red);
+    
+    /* Radius */
+    --radius: 0.75rem;
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    --background: var(--air-two-black);
+    --foreground: var(--air-two-white);
+    --card: var(--air-two-black);
+    --card-foreground: var(--air-two-white);
+    --popover: var(--air-two-black);
+    --popover-foreground: var(--air-two-white);
+    
+    --primary: var(--air-two-red);
+    --primary-foreground: var(--air-two-white);
+    
+    --secondary: var(--air-two-gray-dark);
+    --secondary-foreground: var(--air-two-white);
+    
+    --accent: var(--air-two-gray-dark);
+    --accent-foreground: var(--air-two-white);
+    
+    --muted: var(--air-two-gray-dark);
+    --muted-foreground: var(--air-two-gray);
+    
+    --border: var(--air-two-gray-dark);
+    --input: var(--air-two-gray-dark);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* AIR TWO Button Variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-4 rounded-lg font-semibold uppercase tracking-wide transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl;
+    box-shadow: var(--shadow-red);
+  }
+  
+  .btn-hero:hover {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary hover:bg-secondary/90 text-secondary-foreground px-6 py-3 rounded-lg font-medium transition-all duration-300;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 rounded-lg font-medium transition-all duration-300;
+  }
+  
+  /* Navigation Links */
+  .nav-link {
+    @apply text-white text-sm font-medium uppercase tracking-wide relative hover:text-red-100 transition-colors duration-300;
+  }
+  
+  .nav-link::after {
+    @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300;
+    content: '';
+  }
+  
+  /* Section Spacing */
+  .section {
+    @apply py-20 px-4;
+  }
+  
+  .section-lg {
+    @apply py-32 px-4;
+  }
+  
+  /* Text Gradients */
+  .text-gradient {
+    @apply bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent;
+  }
+  
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+  
+  /* Parallax */
+  .parallax {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+@layer utilities {
+  /* Custom Shadows */
+  .shadow-red {
+    box-shadow: var(--shadow-red);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Transition Utilities */
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  /* Focus Styles for Accessibility */
+  .focus-visible\:outline-none:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  .focus-visible\:ring-2:focus-visible {
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  }
+
+  /* Screen Reader Only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .sr-only.focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-red {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--red-dark));
+}
+
+/* Default opacity values for animations */
+.opacity-0 {
+  opacity: 0;
+}
+
+.translate-y-8 {
+  transform: translateY(2rem);
+}
+
+/* Modal and Form Styles */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Form Styles */
+.form-input:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.aircraft-card {
+  transition: all 0.3s ease;
+}
+
+.aircraft-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.aircraft-card.selected {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+/* Step Indicator */
+.step-indicator {
+  transition: all 0.3s ease;
+}
+
+.step-indicator.active {
+  background-color: #dc2626;
+  border-color: #dc2626;
+  color: white;
+}
+
+/* Smooth scrolling for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-scale-in {
+    animation: none;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
